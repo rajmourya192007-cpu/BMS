@@ -1,0 +1,144 @@
+{% extends "Book_app/layout.html" %}
+{% block title %}List of Books{% endblock %}
+
+{% block content %}
+
+<style>
+  body {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+  }
+
+  h1 {
+    font-weight: 700;
+    color: #ffd700;
+    margin-bottom: 30px;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+  }
+
+  .table {
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    backdrop-filter: blur(12px);
+  }
+
+  .table th {
+    background-color: rgba(255, 215, 0, 0.2);
+    color: #ffd700;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+  }
+
+  .table td {
+    vertical-align: middle;
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .btn-warning {
+    background: linear-gradient(45deg, #ffda79, #ffc107);
+    color: #222;
+    border: none;
+  }
+
+  .btn-warning:hover {
+    background: #fff;
+    color: #000;
+    transform: scale(1.05);
+  }
+
+  .btn-danger {
+    background: linear-gradient(45deg, #e63946, #ff4d6d);
+    border: none;
+  }
+
+  .btn-danger:hover {
+    background: #ff6b81;
+    transform: scale(1.05);
+  }
+
+  .btn-primary {
+    background: linear-gradient(45deg, #00b4d8, #0077b6);
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background: #0096c7;
+    transform: scale(1.05);
+  }
+
+  .no-data {
+    color: #ccc;
+    font-size: 1.1rem;
+    padding: 20px 0;
+  }
+
+  .upload-section {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .card-container {
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  }
+</style>
+
+<div class="container mt-5">
+  <div class="card-container">
+    <h1 class="text-center mb-4"><i class="bi bi-book-half"></i>Books</h1>
+    <table class="table table-hover text-center align-middle">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Book Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in products %}
+        <tr>
+          <td>{{ product.product_id }}</td>
+          <td>{{ product.name }}</td>
+          <td>
+            <a href="{% url 'download_file' product.product_id %}" class="btn btn-warning btn-sm">
+              <i class="bi bi-download"></i> Download
+            </a>
+            <a href="{% url 'Product_delete' product.product_id %}" class="btn btn-danger btn-sm">
+              <i class="bi bi-trash"></i> Delete
+            </a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="3" class="no-data">
+            <i class="bi bi-emoji-frown"></i> No books uploaded yet.
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+```
+<div class="upload-section">
+  <a href="{% url 'product_upload' %}" class="btn btn-primary btn-lg mt-3">
+    <i class="bi bi-cloud-arrow-up"></i> Upload New Book
+  </a>
+</div>
+```
+
+  </div>
+</div>
+{% endblock %}

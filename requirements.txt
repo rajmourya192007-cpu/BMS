@@ -1,0 +1,15 @@
+# In your project folder, create these files:
+
+# requirements.txt (already should exist)
+# Make sure it includes:
+Django
+gunicorn
+dj-database-url
+whitenoise
+psycopg2-binary
+
+# Procfile (create new file)
+web: gunicorn yourprojectname.wsgi
+
+# runtime.txt (optional)
+python-3.9.13

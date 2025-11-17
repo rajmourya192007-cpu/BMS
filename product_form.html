@@ -1,0 +1,89 @@
+{% extends "Book_app/layout.html" %}
+{% block title %}Upload File{% endblock %}
+{% block content %}
+
+<style>
+  body {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+  }
+
+  .upload-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+  }
+
+  .upload-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    border: none;
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    width: 500px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    text-align: center;
+  }
+
+  .upload-card h2 {
+    color: #ffd700;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  }
+
+  form label {
+    font-weight: 600;
+    color: #e2e8f0;
+  }
+
+  form input, select, textarea {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px 15px;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+
+  form input:focus, select:focus, textarea:focus {
+    border-color: #ffd700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .btn-success {
+    background: linear-gradient(45deg, #22c55e, #16a34a);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-success:hover {
+    background: #38bdf8;
+    transform: scale(1.05);
+  }
+</style>
+
+<div class="upload-wrapper">
+  <div class="upload-card">
+    <h2><i class="bi bi-cloud-arrow-up"></i> Upload New File</h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-success mt-3">
+        <i class="bi bi-upload"></i> Upload
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

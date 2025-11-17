@@ -1,0 +1,157 @@
+{% extends "Book_app/layout.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<style>
+  body {
+    background: linear-gradient(rgba(10, 10, 30, 0.85), rgba(10, 10, 40, 0.85)),
+                url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 130px 20px;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffda79;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    color: #e8e8e8;
+    margin: 20px auto;
+    max-width: 800px;
+  }
+
+  .btn-main {
+    background: linear-gradient(45deg, #ffda79, #ffc107);
+    color: #222;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    padding: 12px 35px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+  }
+
+  .btn-main:hover {
+    background: #fff;
+    transform: scale(1.08);
+  }
+
+  .features {
+    padding: 90px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    flex-wrap: nowrap; /* keeps all in one line */
+    overflow-x: auto; /* scrolls on small screens */
+  }
+
+  .features::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .features::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+  }
+
+  .features .card {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    min-width: 320px;
+    max-width: 360px;
+    padding: 40px 20px;
+  }
+
+  .features .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  }
+
+  .features i {
+    font-size: 50px;
+    color: #ffd700;
+  }
+
+  .features h5 {
+    margin-top: 20px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .features p {
+    color: #ddd;
+    font-size: 0.95rem;
+  }
+
+  .footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ccc;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+    font-size: 0.95rem;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<!-- ===== HERO SECTION ===== -->
+
+<section class="hero container">
+  <h1>Welcome to <span class="text-light">Book Library</span></h1>
+  <p>
+    Your personal digital library — upload, organize, and download books with ease.  
+    Experience the future of reading, where your collection is always with you.
+  </p>
+  <a href="{% url 'Product_list' %}" class="btn btn-main mt-3">
+    <i class="bi bi-book-half"></i> Browse Books
+  </a>
+</section>
+
+<!-- ===== SINGLE LINE FEATURE CARDS ===== -->
+
+<section class="features container text-center">
+  <div class="card">
+    <i class="bi bi-cloud-arrow-up"></i>
+    <h5>Upload with Ease</h5>
+    <p>Securely upload your books in seconds — your digital shelf updates instantly, anywhere you go.</p>
+  </div>
+
+  <div class="card">
+    <i class="bi bi-download"></i>
+    <h5>Instant Downloads</h5>
+    <p>Grab your favorite titles in a single click — enjoy seamless downloads without interruptions.</p>
+  </div>
+
+  <div class="card">
+    <i class="bi bi-journal-richtext"></i>
+    <h5>Personalized Library</h5>
+    <p>Organize your books beautifully and access them anywhere, anytime — your smart reading space.</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+
+<footer class="footer">
+  <p>© 2025 Book Library | Designed with ❤️ by Raj | Read Smart. Save Time. Stay Inspired.</p>
+</footer>
+{% endblock %}

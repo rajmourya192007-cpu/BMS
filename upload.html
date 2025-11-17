@@ -1,0 +1,132 @@
+{% extends "Book_app/layout.html" %}
+{% block title %}Upload Book{% endblock %}
+{% block content %}
+
+<style>
+  body {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+  }
+
+  .upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+  }
+
+  .upload-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    padding: 50px;
+    width: 500px;
+    transition: all 0.3s ease;
+  }
+
+  .upload-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  }
+
+  .upload-card h2 {
+    text-align: center;
+    color: #ffd700;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  }
+
+  .form-label {
+    color: #e2e8f0;
+    font-weight: 600;
+  }
+
+  input[type="text"],
+  input[type="file"] {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px 15px;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+
+  input[type="text"]:focus,
+  input[type="file"]:focus {
+    border-color: #ffd700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    outline: none;
+  }
+
+  .btn-success {
+    background: linear-gradient(45deg, #22c55e, #16a34a);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-success:hover {
+    background: #38bdf8;
+    transform: scale(1.05);
+  }
+
+  .btn-secondary {
+    background: linear-gradient(45deg, #475569, #334155);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background: #64748b;
+    transform: scale(1.05);
+  }
+
+  .text-center i {
+    margin-right: 8px;
+  }
+
+</style>
+
+<div class="upload-container">
+  <div class="upload-card">
+    <h2><i class="bi bi-cloud-arrow-up"></i> Upload a New Book</h2>
+
+```
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form-group mb-3">
+    <label for="name" class="form-label">Book Name:</label>
+    <input type="text" name="name" id="name" placeholder="Enter book title" required>
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="file" class="form-label">Choose File:</label>
+    <input type="file" name="file" id="file" required>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" class="btn btn-success btn-lg me-3">
+      <i class="bi bi-upload"></i> Upload
+    </button>
+    <a href="{% url 'Product_list' %}" class="btn btn-secondary btn-lg">
+      <i class="bi bi-arrow-left-circle"></i> Back to Library
+    </a>
+  </div>
+</form>
+```
+
+  </div>
+</div>
+
+{% endblock %}

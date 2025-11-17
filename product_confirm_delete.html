@@ -1,0 +1,125 @@
+{% extends "Book_app/layout.html" %}
+{% block title %}Delete Book{% endblock %}
+
+{% block content %}
+
+<style>
+  body {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+  }
+
+  .delete-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    padding: 50px;
+    text-align: center;
+    transition: all 0.4s ease;
+  }
+
+  .delete-card:hover {
+    transform: scale(1.02);
+  }
+
+  h1 {
+    color: #ff6b6b;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(255, 107, 107, 0.4);
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    margin-bottom: 30px;
+  }
+
+  .btn-danger {
+    background: linear-gradient(45deg, #ef4444, #dc2626);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-danger:hover {
+    background: #f87171;
+    transform: scale(1.08);
+  }
+
+  .btn-secondary {
+    background: linear-gradient(45deg, #475569, #334155);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background: #64748b;
+    transform: scale(1.08);
+  }
+
+  .delete-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+  }
+
+  .icon {
+    font-size: 4rem;
+    color: #ff6b6b;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.8; }
+  }
+</style>
+
+<div class="container delete-container">
+  <div class="col-md-6 delete-card">
+    <div class="icon"><i class="bi bi-exclamation-triangle-fill"></i></div>
+    <h1>Delete Confirmation</h1>
+    <p>Are you sure you want to permanently delete this book?  
+      This action <strong>cannot</strong> be undone.</p>
+
+```
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="card shadow-lg border-0 p-5 rounded-4 text-center" style="max-width: 500px; background: rgba(255,255,255,0.05); color:#fff;">
+    <h3 class="text-danger mb-4"><i class="bi bi-exclamation-triangle-fill"></i> Confirm Delete</h3>
+    <p>Enter your password to confirm deletion of this book.</p>
+
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group mb-3">
+        <input type="password" name="password" placeholder="Enter password" class="form-control text-center" required>
+      </div>
+
+      {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+      {% endif %}
+
+      <button type="submit" class="btn btn-danger btn-lg me-3">
+        <i class="bi bi-trash"></i> Confirm Delete
+      </button>
+      <a href="{% url 'Product_list' %}" class="btn btn-secondary btn-lg">
+        <i class="bi bi-arrow-left-circle"></i> Cancel
+      </a>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
